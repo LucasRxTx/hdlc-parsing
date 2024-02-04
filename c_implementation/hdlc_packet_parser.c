@@ -89,6 +89,5 @@ int main() {
     }
 
     printf("Final player position: (%i, %i)\n", player.position.x, player.position.y);
-    printf("version: %ld\n", __STDC_VERSION__ );
     return 0;
 }
