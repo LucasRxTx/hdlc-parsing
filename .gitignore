@@ -1,0 +1,9 @@
+build/
+venv
+*.pyc
+*.pyo
+.DS_Store
+.vscode
+__pycache__
+*.egg-info
+*.egg
