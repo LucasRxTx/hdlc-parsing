@@ -1,5 +1,21 @@
 # hdlc-parsing
 
+## Quick start
+
+This repo relies on submodules.  To checkout
+
+```
+git clone --recurse-submodules https://github.com/LucasRxTx/hdlc-parsing
+```
+
+If you did not checkout with recurse submodules, you can still get the dependencies with
+
+```
+git submodule init
+git submodule update
+```
+
+
 ## Task description
 
 You are tasked with programming a simple game terminal that keeps track of a character on a gameboard. The game board is a 5-by-5 grid, where the character can move freely left, right, up and down. The direction to move the character is coded as integers indicating the direction (1: up, 2: down, 3: right, 4: left).
@@ -7,6 +23,7 @@ You are tasked with programming a simple game terminal that keeps track of a cha
 The directions are wrapped in HDLC frames. The instructions could have been sent over a serial port, but in this task the instructions are pre-recorded and found in transmission.bin.
 
 Read the instructions and move the characters accordingly. Your program only has to display the final character position.
+
 
 ### Rules:
 
