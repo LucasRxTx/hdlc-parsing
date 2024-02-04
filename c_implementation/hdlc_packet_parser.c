@@ -6,6 +6,7 @@
 #include "utils.h"
 #include "player.h"
 #include "data_loader.h"
+#include "player_driver.h"
 
 #define MAX_FRAME_BUFFER_SIZE 2048
 #define MAX_SAME_MOVE_COUNT 3
@@ -88,5 +89,6 @@ int main() {
     }
 
     printf("Final player position: (%i, %i)\n", player.position.x, player.position.y);
+    printf("version: %ld\n", __STDC_VERSION__ );
     return 0;
 }

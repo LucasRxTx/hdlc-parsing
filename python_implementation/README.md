@@ -1,5 +1,7 @@
 # Python Implementation of HDLC packet reader, and player driver
 
+Created with python 3.10.12
+
 Install dependencies with `python_implementation/` as your cwd.
 
 ```shell
