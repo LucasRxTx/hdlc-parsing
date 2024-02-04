@@ -22,6 +22,7 @@ fn main() {
         }
     };
 
+    // read the file into a buffer
     let mut buffer: Vec<u8> = Vec::new();
     let result = file.read_to_end(&mut buffer);
     match result {
@@ -54,6 +55,7 @@ fn main() {
         }
     }
 
+    // decode the frames and extract the moves
     let mut moves: Vec<u8> = Vec::new();
     for frame in frames {
         let result = decode(&frame, special_chars);
@@ -67,6 +69,7 @@ fn main() {
         }
     }
 
+    // remove moves that are greater than 4
     let mut filtered_moves: Vec<u8> = Vec::new();
     for move_ in moves {
         if move_ > 0x04 {
@@ -106,6 +109,7 @@ fn main() {
         y: 4,
     };
 
+    // apply the moves
     for m in final_moves {
         if player.x + m < 5 {
             player.x += m;
