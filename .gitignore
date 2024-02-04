@@ -7,3 +7,6 @@ venv
 __pycache__
 *.egg-info
 *.egg
+# rust gitignore defaults
+/target/
+.cargo/
