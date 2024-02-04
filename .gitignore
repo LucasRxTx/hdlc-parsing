@@ -7,5 +7,5 @@ venv
 __pycache__
 *.egg-info
 *.egg
-target/*
+target/
 .cargo/
