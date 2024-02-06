@@ -25,7 +25,6 @@ int main() {
     if (bytes_read < 0)
         die("Could not read file %s\n", path);
 
-
     yahdlc_control_t control;
     char frame_data[MAX_FRAME_BUFFER_SIZE] = {0};
     int data_length = 0;
