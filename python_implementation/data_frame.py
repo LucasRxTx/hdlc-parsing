@@ -15,8 +15,8 @@ class DataFrame(NamedTuple):
     sequence_number: int
 
     def is_data(self) -> bool:
-        return self.frame_type == yahdlc.FRAME_DATA    
-    
+        return self.frame_type == yahdlc.FRAME_DATA
+
     def is_ack(self) -> bool:
         return self.frame_type == yahdlc.FRAME_ACK
 
@@ -59,36 +59,24 @@ class DataFrameParser:
         return moves_t([d.get_data_as_int() for d in data])
 
     def __filter_moves_that_repeat_three_times_in_a_row(self, moves: moves_t) -> moves_t:
-        same_moves = []
         out_moves = []
 
         # buffer all moves into same_moves, and move them into out_moves when a
         # different move is found, or throw them away if they exceed 3 times in a row.
-        for move in moves:
-            if same_moves and same_moves[-1] == move:
-                same_moves.append(move)
-                if len(same_moves) >= 3:
-                    # exceed 3 times in a row, reset same_moves buffer
-                    same_moves = []
-
+        moves_count = len(moves)
+        for i, move in enumerate(moves):
+            if i < moves_count - 2 and move == moves[i + 1] and move == moves[i + 2]:
                 continue
 
-            # move is different: consume previous moves from same_moves buffer.
-            for same_move in same_moves:
-                out_moves.append(same_move)
+            out_moves.append(move)
 
-            # add current move to buffer
-            same_moves = [move]
-        
-        # consume final same_moves
-        for same_move in same_moves:
-            out_moves.append(same_move)
+
 
         return out_moves
 
     def parse(self) -> moves_t:
         """Parses the data and return a list of moves.
-        
+
         Returns:
             list[int]: A list of moves.
         """
