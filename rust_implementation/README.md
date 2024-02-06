@@ -2,7 +2,9 @@
 
 Created with rustc 1.75.0 (82e1608df 2023-12-21)
 
-cc is a system requirement
+cc is a system requirement.
+
+On de
 
 ```shell
 sudo apt-get install gcc
