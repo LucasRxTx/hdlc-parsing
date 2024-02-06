@@ -16,13 +16,13 @@ int main() {
     char *path = "transmission.bin";
 
     size_t file_size = get_file_size(path);
-    if (file_size > MAX_FRAME_BUFFER_SIZE) 
+    if (file_size > MAX_FRAME_BUFFER_SIZE)
         die("File size is too large\n");
 
 
     char frame_buffer[MAX_FRAME_BUFFER_SIZE] = {0};
     size_t bytes_read = read_frames_from_file(path, frame_buffer, MAX_FRAME_BUFFER_SIZE);
-    if (bytes_read < 0) 
+    if (bytes_read < 0)
         die("Could not read file %s\n", path);
 
 
@@ -40,7 +40,7 @@ int main() {
             break;
         }
 
-        if (control.frame == YAHDLC_FRAME_DATA) 
+        if (control.frame == YAHDLC_FRAME_DATA)
             move_buffer[move_buffer_index++] = frame_data[0];
 
         // Move to the next frame
@@ -66,7 +66,7 @@ int main() {
                 same_move_buffer_index = 0;
             }
             continue;
-        } 
+        }
 
         // Exaust same moves buffer
         for (size_t j = 0; j < same_move_buffer_index; j++) {
