@@ -80,28 +80,13 @@ fn main() {
 
     // remove moves that occure more than 3 times in a row
     let mut final_moves: Vec<u8> = Vec::new();
-    let mut last_move: u8 = 0;
-    let mut move_count: u8 = 0;
-    for move_ in filtered_moves {
-        if move_count > 0 && move_ == last_move {
-            last_move = move_;
-            move_count += 1;
-            if move_count >= 3 {
-                move_count = 0;
-            }
+    let filtered_moves_length = filtered_moves.len();
+    for (i, move_) in filtered_moves.iter().enumerate() {
+        if i < filtered_moves_length - 2 && *move_ == filtered_moves[i + 1] && *move_ == filtered_moves[i + 2] {
             continue;
         }
 
-        for _ in 0..move_count {
-            final_moves.push(last_move);
-        }
-
-        last_move = move_;
-        move_count = 1;
-    }
-
-    for _ in 0..move_count {
-        final_moves.push(last_move);
+        final_moves.push(*move_);
     }
 
     let mut player = Player {
